@@ -17,7 +17,11 @@ router.get('/movies', (req, res) => {
 
     fetch(url, options)
       .then(response => response.json())
-      .then(movies => res.json({movies:movies}))
+      .then(movies => {
+        console.log(movies)
+        console.log(process.env.OWM_API_KEY)
+        res.json({movies:movies.results})
+    })
       .catch(err => console.error('error:' + err));
 
 });
