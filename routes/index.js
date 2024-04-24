@@ -17,7 +17,7 @@ router.get('/movies', (req, res) => {
 
     fetch(url, options)
       .then(response => response.json())
-      .then(movies => res.json({movies:movies.results}))
+      .then(movies => res.json({movies:movies}))
       .catch(err => console.error('error:' + err));
 
 });
