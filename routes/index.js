@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const fetch = require('node-fetch')
 module.exports = router;
+const Key = process.env.OWM_API_KEY
 
 
 router.get('/movies', (req, res) => {
@@ -10,13 +11,17 @@ router.get('/movies', (req, res) => {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: process.env.OWM_API_KEY,
+        Authorization: Key,
       }
     };
 
     fetch(url, options)
-      .then(res => res.json())
-      .then(movies => res.json({movies:movies.results}))
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        res.json({movies:data.results})
+      })
+        
       .catch(err => console.error('error:' + err));
 
 });
