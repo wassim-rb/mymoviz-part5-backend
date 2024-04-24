@@ -11,7 +11,7 @@ router.get('/movies', (req, res) => {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: key,
+        Authorization: `${key}`,
       }
     };
 
